@@ -59,6 +59,11 @@ That's it — `npx` fetches and runs the server on demand.
 - Website: https://ultimath.ai
 - Source: https://github.com/Flupke68/ultimath-mcp
 
+## Under the hood
+
+Ultimath's engines build on FLINT/Arb, GMP/MPFR and Boost — full credits at
+https://ultimath.ai/credits.
+
 ## License
 
 MIT
