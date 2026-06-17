@@ -1,0 +1,41 @@
+{
+  "manifest_version": "0.3",
+  "name": "ultimath",
+  "display_name": "Ultimath",
+  "version": "0.1.1",
+  "description": "Evaluate math expressions on four independent engines (multiprecision, exact decimal, IEEE-754 double, interval) and compare results to catch floating-point error.",
+  "long_description": "Ultimath runs every expression through four independent numeric engines in parallel and returns all four results side by side, so disagreement between them flags numerical unreliability. Tools: evaluate (4-engine evaluation) and list_functions (catalog). Get a free API key at https://ultimath.ai.",
+  "author": {
+    "name": "Ultimath",
+    "url": "https://ultimath.ai"
+  },
+  "homepage": "https://ultimath.ai",
+  "documentation": "https://ultimath.ai",
+  "server": {
+    "type": "node",
+    "entry_point": "dist/index.js",
+    "mcp_config": {
+      "command": "node",
+      "args": ["${__dirname}/dist/index.js"],
+      "env": {
+        "ULTIMATH_API_KEY": "${user_config.api_key}"
+      }
+    }
+  },
+  "tools": [
+    { "name": "evaluate", "description": "Evaluate a math expression on Ultimath's four engines." },
+    { "name": "list_functions", "description": "List the available functions and constants." }
+  ],
+  "user_config": {
+    "api_key": {
+      "type": "string",
+      "title": "Ultimath API key",
+      "description": "Your key from https://ultimath.ai (starts with utev_). Shown once at sign-up.",
+      "required": true,
+      "sensitive": true
+    }
+  },
+  "compatibility": {
+    "runtimes": { "node": ">=18" }
+  }
+}

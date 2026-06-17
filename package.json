@@ -1,0 +1,49 @@
+{
+  "name": "ultimath-mcp",
+  "version": "0.1.1",
+  "description": "Stop hallucinating numbers. MCP server for Ultimath: math on multiple independent engines, in parallel.",
+  "type": "module",
+  "main": "dist/index.js",
+  "bin": {
+    "ultimath-mcp": "dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "bundle:mcpb": "esbuild src/index.ts --bundle --platform=node --format=cjs --target=node18 --outfile=build-mcpb/dist/index.js",
+    "pack:mcpb": "npm run bundle:mcpb && cp manifest.json build-mcpb/manifest.json && npx -y @anthropic-ai/mcpb pack build-mcpb ../landing/static/ultimath.mcpb"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.29.0",
+    "zod": "^3.25.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "esbuild": "^0.24.2",
+    "typescript": "^5.7.0"
+  },
+  "files": [
+    "dist"
+  ],
+  "keywords": [
+    "mcp",
+    "math",
+    "evaluation",
+    "multiprecision",
+    "interval-arithmetic",
+    "floating-point",
+    "ultimath"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Flupke68/ultimath-mcp.git"
+  },
+  "homepage": "https://github.com/Flupke68/ultimath-mcp#readme",
+  "bugs": {
+    "url": "https://github.com/Flupke68/ultimath-mcp/issues"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
