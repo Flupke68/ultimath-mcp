@@ -324,14 +324,16 @@ function formatFunctions(functions: FunctionEntry[], category?: string): string 
 
 const server = new McpServer({
   name: "ultimath",
-  version: "0.1.1",
+  version: "0.1.2",
 });
 
 server.registerTool(
   "evaluate",
   {
+    title: "Evaluate a math expression",
+    annotations: { title: "Evaluate a math expression", readOnlyHint: true },
     description:
-      "Evaluate a mathematical expression using Ultimath's 4 independent engines " +
+      "Evaluate a mathematical expression via the Ultimath API (https://ultimath.ai) — 4 independent engines " +
       "(multiprecision, decimal, IEEE 754 double, interval arithmetic). " +
       "Returns each engine's result so you can compare and detect floating-point errors.\n\n" +
       "The 4 engines are independent and each computes with its own native primitive — so " +
@@ -433,8 +435,10 @@ server.registerTool(
 server.registerTool(
   "list_functions",
   {
+    title: "List available functions",
+    annotations: { title: "List available functions", readOnlyHint: true },
     description:
-      "List all mathematical functions available in Ultimath's engines. " +
+      "List all mathematical functions available via the Ultimath API (https://ultimath.ai). " +
       "Returns name, arity, category, and description for each function. " +
       "Use this to discover what functions you can pass to the evaluate tool. " +
       "Optionally filter by category (algebraic, trigonometric, hyperbolic, " +
