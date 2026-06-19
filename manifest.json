@@ -11,6 +11,7 @@
   },
   "homepage": "https://ultimath.ai",
   "documentation": "https://ultimath.ai",
+  "privacy_policies": ["https://ultimath.ai/privacy/"],
   "server": {
     "type": "node",
     "entry_point": "dist/index.js",

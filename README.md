@@ -64,6 +64,12 @@ That's it — `npx` fetches and runs the server on demand.
 Ultimath's engines build on FLINT/Arb, GMP/MPFR and Boost — full credits at
 https://ultimath.ai/credits.
 
+## Privacy
+
+Ultimath stores only a hash of your API key and basic usage metrics to run and
+secure the service; expressions are evaluated, not retained for training. Full
+policy: https://ultimath.ai/privacy/
+
 ## License
 
 MIT
