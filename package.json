@@ -1,6 +1,6 @@
 {
   "name": "ultimath-mcp",
-  "version": "0.1.2",
+  "version": "0.1.4",
   "description": "Stop hallucinating numbers. MCP server for Ultimath: math on multiple independent engines, in parallel.",
   "type": "module",
   "main": "dist/index.js",

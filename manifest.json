@@ -2,7 +2,7 @@
   "manifest_version": "0.3",
   "name": "ultimath",
   "display_name": "Ultimath",
-  "version": "0.1.2",
+  "version": "0.1.4",
   "description": "Evaluate math expressions on four independent engines (multiprecision, exact decimal, IEEE-754 double, interval) and compare results to catch floating-point error.",
   "long_description": "Ultimath runs every expression through four independent numeric engines in parallel and returns all four results side by side, so disagreement between them flags numerical unreliability. Tools: evaluate (4-engine evaluation) and list_functions (catalog). Get a free API key at https://ultimath.ai.",
   "author": {
