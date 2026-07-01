@@ -30,13 +30,13 @@ const API_URL =
 const API_KEY = process.env.ULTIMATH_API_KEY ?? process.env.UTEVIA_API_KEY;
 const FETCH_TIMEOUT_MS = 10_000;
 
-if (!API_KEY) {
-  console.error(
-    "ERROR: ULTIMATH_API_KEY environment variable is required.\n" +
-    "Get your key at https://ultimath.ai and set it in your MCP config."
-  );
-  process.exit(1);
-}
+// The key is required to CALL the tools, not to START the server. Keeping the
+// process alive with no key lets `tools/list` succeed, so MCP registries (e.g.
+// Glama's quality inspector) can read the tool definitions without credentials.
+// The key is enforced per-call instead — see the guards in the tool handlers.
+const MISSING_KEY_MESSAGE =
+  "ULTIMATH_API_KEY is not set. Get a free key at https://ultimath.ai and " +
+  "set it in your MCP server config.";
 
 // =========================================================================
 // Types for the REST API response
@@ -404,6 +404,9 @@ server.registerTool(
     },
   },
   async ({ expression, precision, format }) => {
+    if (!API_KEY) {
+      return { content: [{ type: "text", text: MISSING_KEY_MESSAGE }], isError: true };
+    }
     try {
       const { status, body } = await callEvaluateApi(expression, precision, format);
 
@@ -458,6 +461,9 @@ server.registerTool(
     },
   },
   async ({ category }) => {
+    if (!API_KEY) {
+      return { content: [{ type: "text", text: MISSING_KEY_MESSAGE }], isError: true };
+    }
     try {
       const { status, body } = await callFunctionsApi();
 
